@@ -1,0 +1,20 @@
+.headerBackground {
+    /*background: linear-gradient(90deg, rgba(131,58,180,0.6979166666666667) 10%, rgba(253,29,29,0.6979166666666667) 50%, 
+    rgba(252,176,69,0.700717787114846) 90%);*/ 
+    
+    height: 40vh;
+    margin: 10px 10px 0 10px;
+    border-radius: 10px;
+    background-image: linear-gradient(90deg, rgba(131,58,180,0.5438550420168067) 10%, rgba(253,29,29,0.5382528011204482) 50%, 
+    rgba(252,176,69,0.5438550420168067) 90%), url(../../images/header\ bg.jpg);
+    background-position: center;
+    background-size: cover;
+    
+}
+.headerH1 {
+    margin: 0 auto;
+    width: 60%;
+    padding-top: 40px;
+    color: aliceblue;
+
+}
