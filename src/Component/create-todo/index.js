@@ -1,20 +1,25 @@
 
 import styles from "./index.module.css"
+import { useLocalStorage } from "usehooks-ts";
+import {useState} from "react"
 
 function CreateTodo() {
-    let todo;
+    const [todos, setTodos] = useLocalStorage("TODO_KEY",[]);
+    //let todo;
+    const [todo, setTodo] =useState("");
 
-    function collectInput(event) {
-        todo = event.target.value;
-    }
+    //function collectInput(event) {
+        //todo = event.target.value;
+        //setTodo([event.target.value]);}
+    const collectInput = event => setTodo([event.target.value]);
     
     function saveTodo(){
         // Get existing list of todos from local storage
-        let todos = JSON.parse(localStorage.getItem("TODO_KEY")) || [];
+        //let todos = JSON.parse(localStorage.getItem("TODO_KEY")) || [];
         // console.log(todos)
         //Add a new todo to existing list of todos
-        todos.push(todo)
         // Set all todos in local storage
+        setTodos([...todos,todo]);
         
         localStorage.setItem("TODO_KEY", JSON.stringify(todos))
         //saveTodo
@@ -22,8 +27,11 @@ function CreateTodo() {
     
     return (
         <section className={styles.createTodoSection}>
-            <input onChange={collectInput} className= {styles.createTodoInput} placeholder= "Start typing....." />
-            <button onClick={saveTodo}>Create</button>
+            <input onChange={event => setTodo(event.target.value)} 
+            className= {styles.createTodoInput} placeholder= "Start typing....." />
+            <button className ={ `btn btn-warning ${styles.btn}`} 
+            onClick={() => setTodos([...todos,todo])}
+            >Create</button>
         </section>
         
     );
