@@ -8,7 +8,8 @@ function TodoItem({index, todo}) {
 <label 
 className="form-check-label" 
 for={index}
->{todo}</label>  
+>{todo}</label>
+  
 </li>
     );
     }

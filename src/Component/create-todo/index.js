@@ -11,23 +11,34 @@ function CreateTodo() {
     //function collectInput(event) {
         //todo = event.target.value;
         //setTodo([event.target.value]);}
-    const collectInput = event => setTodo([event.target.value]);
+    // const collectInput = event => setTodo([event.target.value]);
     
-    function saveTodo(){
+    const saveTodos = () => {
+        //save all todos
+        setTodos([...todos, todo]);
+        //wipe the input box
+        setTodo("");
+    }
+    //function saveTodo(){
         // Get existing list of todos from local storage
         //let todos = JSON.parse(localStorage.getItem("TODO_KEY")) || [];
         // console.log(todos)
         //Add a new todo to existing list of todos
         // Set all todos in local storage
-        setTodos([...todos,todo]);
+        //setTodos([...todos,todo]);
         
-        localStorage.setItem("TODO_KEY", JSON.stringify(todos))
+        //localStorage.setItem("TODO_KEY", JSON.stringify(todos))
         //saveTodo
-    }
-    
+
+         
     return (
         <section className={styles.createTodoSection}>
-            <input onChange={event => setTodo(event.target.value)} 
+            <input 
+            value={todo}
+            //onKeyPress={event => event.charCode == 13 
+                onKeyDown= {event => event.key == "Enter" &&
+                saveTodos()}
+            onChange={event => setTodo(event.target.value)} 
             className= {styles.createTodoInput} placeholder= "Start typing....." />
             <button className ={ `btn btn-warning ${styles.btn}`} 
             onClick={() => setTodos([...todos,todo])}
@@ -35,5 +46,6 @@ function CreateTodo() {
         </section>
         
     );
-}
+    }
+    
 export default CreateTodo;

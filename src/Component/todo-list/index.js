@@ -9,13 +9,19 @@ function TodoList() {
     
     
     return (
-        <ul className= "list-group">
+       <section>
+         <button 
+         className="btn btn-danger"
+         onClick={() => setTodos([])}
+         >clear Todos</button>
+         <ul className= "list-group">
             {todos.map(function(todo, index)  {
                 return  <TodoItem todo={todo} index={index} />
                     
                 
             })}
         </ul>
+       </section>
     );
 }
 export default TodoList;
