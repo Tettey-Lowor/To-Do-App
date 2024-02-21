@@ -41,11 +41,12 @@ function CreateTodo() {
             onChange={event => setTodo(event.target.value)} 
             className= {styles.createTodoInput} placeholder= "Start typing....." />
             <button className ={ `btn btn-warning ${styles.btn}`} 
+            
             onClick={() => setTodos([...todos,todo])}
             >Create</button>
         </section>
         
     );
     }
-    
+
 export default CreateTodo;

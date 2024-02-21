@@ -12,6 +12,7 @@ function TodoList() {
        <section>
          <button 
          className="btn btn-danger"
+        
          onClick={() => setTodos([])}
          >clear Todos</button>
          <ul className= "list-group">

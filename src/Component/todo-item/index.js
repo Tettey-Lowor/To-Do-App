@@ -9,7 +9,8 @@ function TodoItem({index, todo}) {
 className="form-check-label" 
 for={index}
 >{todo}</label>
-  
+<button className= "btn btn-Danger"> Delete</button>
+
 </li>
     );
     }
