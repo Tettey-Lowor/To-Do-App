@@ -1,35 +1,31 @@
 
 import styles from "./index.module.css"
-import { useLocalStorage } from "usehooks-ts";
+
 import {useState} from "react"
 
-function CreateTodo() {
-    const [todos, setTodos] = useLocalStorage("TODO_KEY",[]);
-    //let todo;
-    const [todo, setTodo] =useState("");
+ function CreateTodo() {
+   
+    const [todo, setTodo] = useState("");
 
-    //function collectInput(event) {
-        //todo = event.target.value;
-        //setTodo([event.target.value]);}
-    // const collectInput = event => setTodo([event.target.value]);
+    const saveTodos = async () => {
+        // post todo to the todo api
+        const response = await fetch ('http://localhost:4000/todos', {
+            method:"POST",
+            body: JSON.stringify({
+                title:todo
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+    console.log('hghggh',data);
     
-    const saveTodos = () => {
-        //save all todos
-        setTodos([...todos, todo]);
         //wipe the input box
         setTodo("");
     }
-    //function saveTodo(){
-        // Get existing list of todos from local storage
-        //let todos = JSON.parse(localStorage.getItem("TODO_KEY")) || [];
-        // console.log(todos)
-        //Add a new todo to existing list of todos
-        // Set all todos in local storage
-        //setTodos([...todos,todo]);
-        
-        //localStorage.setItem("TODO_KEY", JSON.stringify(todos))
-        //saveTodo
-
+    
+    
          
     return (
         <section className={styles.createTodoSection}>
@@ -42,7 +38,7 @@ function CreateTodo() {
             className= {styles.createTodoInput} placeholder= "Start typing....." />
             <button className ={ `btn btn-warning ${styles.btn}`} 
             
-            onClick={() => setTodos([...todos,todo])}
+            onClick={() => saveTodos()}
             >Create</button>
         </section>
         
